@@ -1,233 +1,131 @@
 import streamlit as st
-from PIL import Image
-
-# Load the logo image from the repo folder
-logo = Image.open("logo.png")  # Or "assets/logo.png" if you used a subfolder
-
-# Show the logo (adjust width)
-st.image(logo, width=150)
-
-# Add company name as a big header
-st.title("VectorAlgoAI")
-
-
-import streamlit as st
 from datetime import datetime
 
-st.title("Welcome to VectorAlgoAI")
-st.image("logo.png", width=150)  # Replace with your logo filename or path
+# Page config
+st.set_page_config(page_title="VectorAlgoAI", layout="centered")
 
-st.header("What VectorAlgoAI Offers")
-
+# Custom styles
 st.markdown("""
-- **Interactive Trading Charts**  
-  Analyze markets with intuitive, real-time charts—no downloads needed.
+<style>
+h1, h2, h3 {
+    color: #4B8BBE;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.service-icon {
+    font-size: 40px;
+    color: #F39C12;
+    margin-right: 15px;
+}
+.service-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.countdown {
+    font-size: 48px;
+    font-weight: bold;
+    color: #E74C3C;
+    margin-top: 10px;
+}
+.timeline {
+    border-left: 4px solid #4B8BBE;
+    margin-left: 20px;
+    padding-left: 20px;
+}
+.timeline-item {
+    margin-bottom: 30px;
+}
+.timeline-date {
+    color: #2980B9;
+    font-weight: bold;
+}
+</style>
+""", unsafe_allow_html=True)
 
-- **Custom AI Expert Advisors**  
-  Describe your trading strategy in plain English, and get a personalized AI-powered Expert Advisor compatible with MT5, cTrader, and more.
+# Header and logo
+st.title("🚀 VectorAlgoAI")
+st.image("logo.png", width=120)  # Replace with your actual logo filename
 
-- **Unified Dashboard**  
-  Manage your strategies, monitor open positions, and receive signals — all from one easy-to-use platform.
+# Services section
+st.subheader("What We Offer")
+services = [
+    ("📈", "Interactive Trading Charts", "Analyze markets with intuitive, real-time charts—no downloads needed."),
+    ("🤖", "Custom AI Expert Advisors", "Describe your trading strategy in plain English and get a personalized AI-powered Expert Advisor compatible with MT5, cTrader, and more."),
+    ("📊", "Unified Dashboard", "Manage strategies, monitor open positions, and receive signals — all in one easy-to-use platform."),
+    ("📰", "News & Sentiment Analysis", "Stay updated with curated financial news and AI-powered sentiment insights to make smarter decisions."),
+]
 
-- **News & Sentiment Analysis**  
-  Stay updated with curated financial news and AI-powered sentiment insights to make smarter decisions.
-""")
+for icon, title, desc in services:
+    st.markdown(f"""
+    <div class="service-item">
+        <div class="service-icon">{icon}</div>
+        <div>
+            <strong>{title}</strong><br>
+            <small>{desc}</small>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
-st.header("Our Roadmap")
+# Roadmap with timeline style
+st.subheader("Our Roadmap")
+roadmap = [
+    ("Nov 2025", "MVP", "Basic charts + Strategy input form + Sample signals + News & Sentiment feed"),
+    ("Jan 2026", "Beta Launch", "AI-driven EA generation + Backtesting dashboard"),
+    ("Mar 2026", "Full Launch", "Multi-platform EA downloads + Real-time data + Advanced analytics"),
+]
 
-st.markdown("""
-| Phase       | Features                                         | Target Completion |
-|-------------|-------------------------------------------------|-------------------|
-| MVP         | Basic charts + Strategy input form + Sample signals + News & Sentiment feed | Nov 2025          |
-| Beta Launch | AI-driven EA generation + Backtesting dashboard  | Jan 2026          |
-| Full Launch | Multi-platform EA downloads + Real-time data + Advanced analytics | Mar 2026          |
-""")
-
-st.header("Countdown to Launch")
-
-launch_date = datetime(2026, 1, 25, 0, 0, 0)
-now = datetime.now()
-time_left = launch_date - now
-
-days = time_left.days
-hours, remainder = divmod(time_left.seconds, 3600)
-minutes, seconds = divmod(remainder, 60)
-
-if time_left.total_seconds() > 0:
-    st.markdown(f"🚀 Launching on **25 January 2026** — only **{days} days, {hours} hours, {minutes} minutes, {seconds} seconds** left!")
-else:
-    st.markdown("🎉 We have launched! Welcome to VectorAlgoAI.")
-
-# Optional: Add a button or link to sign up for updates or early access
-st.markdown("[Sign up for early access](#)")
-
-
-
-
+st.markdown('<div class="timeline">', unsafe_allow_html=True)
+for date, phase, desc in roadmap:
+    st.markdown(f"""
+    <div class="timeline-item">
+        <div class="timeline-date">{date}</div>
+        <strong>{phase}</strong><br>
+        <small>{desc}</small>
+    </div>
+    """, unsafe_allow_html=True)
+st.markdown('</div>', unsafe_allow_html=True)
 import streamlit as st
+from datetime import datetime
 import time
 
-st.set_page_config(page_title="VectorAlgo AI - AI Trading Bots", layout="wide")
+st.set_page_config(page_title="VectorAlgoAI Live Timer Demo", layout="centered")
 
-# Custom CSS for styles
-st.markdown(
-    """
-    <style>
-    /* Gradient text */
-    .gradient-text {
-        background: linear-gradient(90deg, #ff7e5f, #feb47b);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        font-weight: 900;
-        font-size: 4rem;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        margin-bottom: 0;
-    }
-    /* Subheadline */
-    .subheadline {
-        font-size: 1.5rem;
-        color: #666;
-        margin-top: 0;
-        margin-bottom: 2rem;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    /* CTA button */
-    .cta-button {
-        background: #ff7e5f;
-        color: white;
-        padding: 1rem 2rem;
-        border-radius: 40px;
-        font-weight: 700;
-        font-size: 1.3rem;
-        text-decoration: none;
-        transition: background 0.3s ease;
-        display: inline-block;
-        margin-bottom: 3rem;
-    }
-    .cta-button:hover {
-        background: #feb47b;
-        color: #fff;
-        cursor: pointer;
-    }
-    /* Feature blocks */
-    .feature {
-        text-align: center;
-        padding: 1rem 2rem;
-        border-radius: 15px;
-        box-shadow: 0 8px 20px rgba(255, 126, 95, 0.2);
-        background: #fff7f4;
-        margin: 1rem;
-    }
-    .feature h3 {
-        font-size: 1.6rem;
-        margin-bottom: 0.5rem;
-    }
-    .feature p {
-        color: #666;
-        font-size: 1rem;
-    }
-    /* Founder block */
-    .founder {
-        background: #ffefd5;
-        border-left: 8px solid #ff7e5f;
-        padding: 1.5rem 2rem;
-        font-style: italic;
-        font-size: 1.1rem;
-        margin: 3rem 0;
-    }
-    /* Footer */
-    footer {
-        font-size: 0.9rem;
-        color: #999;
-        margin-top: 3rem;
-        text-align: center;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    a.social-link {
-        margin: 0 0.7rem;
-        color: #ff7e5f;
-        text-decoration: none;
-        font-weight: 700;
-    }
-    a.social-link:hover {
-        text-decoration: underline;
-        color: #feb47b;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
+launch_date = datetime(2026, 1, 25, 0, 0, 0)
 
-# Hero Section
-st.markdown('<h1 class="gradient-text">Build AI Trading Bots <br> Without Coding</h1>', unsafe_allow_html=True)
-st.markdown('<p class="subheadline">Describe your strategy in simple English — get a fully deployable trading bot instantly.</p>', unsafe_allow_html=True)
+st.title("🚀 Countdown to Launch")
 
-# CTA Button
-if st.button("Join the Waitlist"):
-    st.success("Thanks for joining! We will notify you with updates.")
+# Create an empty placeholder for the timer
+timer_placeholder = st.empty()
 
-# Features
-col1, col2, col3, col4 = st.columns(4)
-with col1:
-    st.markdown(
-        """
-        <div class="feature">
-        <h3>🚀 Instant Bot Creation</h3>
-        <p>Generate live trading bots from plain English strategy descriptions.</p>
+def format_time_left(timedelta):
+    days = timedelta.days
+    hours, remainder = divmod(timedelta.seconds, 3600)
+    minutes, seconds = divmod(remainder, 60)
+    return f"{days:02}d : {hours:02}h : {minutes:02}m : {seconds:02}s"
+
+while True:
+    now = datetime.now()
+    time_left = launch_date - now
+    if time_left.total_seconds() <= 0:
+        timer_placeholder.markdown("<h2 style='color:green; text-align:center;'>🎉 We have launched! Welcome to VectorAlgoAI.</h2>", unsafe_allow_html=True)
+        break
+    
+    # Display timer with custom styling and monospace font for digital feel
+    timer_placeholder.markdown(f"""
+        <div style="
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 64px;
+            font-weight: bold;
+            color: #E74C3C;
+            text-align: center;
+            background: #1e1e1e;
+            border-radius: 12px;
+            padding: 20px;
+            width: fit-content;
+            margin: auto;
+            box-shadow: 0 0 20px #E74C3C;">
+            {format_time_left(time_left)}
         </div>
-        """,
-        unsafe_allow_html=True,
-    )
-with col2:
-    st.markdown(
-        """
-        <div class="feature">
-        <h3>🧠 AI-Powered NLP</h3>
-        <p>Advanced AI translates your words into clean, ready-to-run code.</p>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-with col3:
-    st.markdown(
-        """
-        <div class="feature">
-        <h3>📈 Backtest & Optimize</h3>
-        <p>Instantly test strategies and see performance before you trade.</p>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-with col4:
-    st.markdown(
-        """
-        <div class="feature">
-        <h3>🔒 Secure & Easy Deployment</h3>
-        <p>Deploy bots safely to your preferred trading platform.</p>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-
-# Founder Note
-st.markdown(
-    """
-    <div class="founder">
-    “VectorAlgo AI is built by Praveen Kumar — passionate AI researcher and trader. Our mission: democratize algo trading so anyone can automate strategies with zero coding.”
-    </div>
-    """,
-    unsafe_allow_html=True,
-)
-
-# Footer with social links
-st.markdown(
-    """
-    <footer>
-    Contact us: contact@vectoralgoai.com |  
-    <a href="https://t.me/VectorAlgoAI" class="social-link" target="_blank">Telegram</a> |  
-    <a href="https://twitter.com/VectorAlgoAI" class="social-link" target="_blank">Twitter</a> |  
-    <a href="https://linkedin.com/company/vectoralgoai" class="social-link" target="_blank">LinkedIn</a>
-    </footer>
-    """,
-    unsafe_allow_html=True,
-)
+    """, unsafe_allow_html=True)
+    
+    time.sleep(1)
