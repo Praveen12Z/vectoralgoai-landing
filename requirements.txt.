@@ -1,4 +1,6 @@
 streamlit
+from streamlit_autorefresh import st_autorefresh
+
 streamlit_autorefresh
 pandas
 plotly
