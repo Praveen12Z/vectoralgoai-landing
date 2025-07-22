@@ -11,6 +11,56 @@ st.image(logo, width=150)
 st.title("VectorAlgoAI")
 
 
+import streamlit as st
+from datetime import datetime
+
+st.title("Welcome to VectorAlgoAI")
+st.image("logo.png", width=150)  # Replace with your logo filename or path
+
+st.header("What VectorAlgoAI Offers")
+
+st.markdown("""
+- **Interactive Trading Charts**  
+  Analyze markets with intuitive, real-time charts—no downloads needed.
+
+- **Custom AI Expert Advisors**  
+  Describe your trading strategy in plain English, and get a personalized AI-powered Expert Advisor compatible with MT5, cTrader, and more.
+
+- **Unified Dashboard**  
+  Manage your strategies, monitor open positions, and receive signals — all from one easy-to-use platform.
+
+- **News & Sentiment Analysis**  
+  Stay updated with curated financial news and AI-powered sentiment insights to make smarter decisions.
+""")
+
+st.header("Our Roadmap")
+
+st.markdown("""
+| Phase       | Features                                         | Target Completion |
+|-------------|-------------------------------------------------|-------------------|
+| MVP         | Basic charts + Strategy input form + Sample signals + News & Sentiment feed | Nov 2025          |
+| Beta Launch | AI-driven EA generation + Backtesting dashboard  | Jan 2026          |
+| Full Launch | Multi-platform EA downloads + Real-time data + Advanced analytics | Mar 2026          |
+""")
+
+st.header("Countdown to Launch")
+
+launch_date = datetime(2026, 1, 25, 0, 0, 0)
+now = datetime.now()
+time_left = launch_date - now
+
+days = time_left.days
+hours, remainder = divmod(time_left.seconds, 3600)
+minutes, seconds = divmod(remainder, 60)
+
+if time_left.total_seconds() > 0:
+    st.markdown(f"🚀 Launching on **25 January 2026** — only **{days} days, {hours} hours, {minutes} minutes, {seconds} seconds** left!")
+else:
+    st.markdown("🎉 We have launched! Welcome to VectorAlgoAI.")
+
+# Optional: Add a button or link to sign up for updates or early access
+st.markdown("[Sign up for early access](#)")
+
 
 
 
