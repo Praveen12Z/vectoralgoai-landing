@@ -1,4 +1,20 @@
 import streamlit as st
+from PIL import Image
+
+# Load the logo image from the repo folder
+logo = Image.open("logo.png")  # Or "assets/logo.png" if you used a subfolder
+
+# Show the logo (adjust width)
+st.image(logo, width=150)
+
+# Add company name as a big header
+st.title("VectorAlgoAI")
+
+
+
+
+
+import streamlit as st
 import time
 
 st.set_page_config(page_title="VectorAlgo AI - AI Trading Bots", layout="wide")
