@@ -1,5 +1,5 @@
 import streamlit as st
-from streamlit_autorefresh import st_autorefresh
+
 import datetime
 import streamlit.components.v1 as components
 
