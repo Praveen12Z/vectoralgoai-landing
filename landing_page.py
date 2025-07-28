@@ -2,51 +2,62 @@ import streamlit as st
 from PIL import Image
 
 # ---- Page Config ----
-st.set_page_config(page_title="AI Trading Assistant", layout="centered")
+st.set_page_config(page_title="VectorAlgo AI", page_icon="📈", layout="wide")
 
 # ---- Custom Styling ----
-st.markdown("""
+st.markdown(
+    """
     <style>
-        .main { background-color: #f9fafb; }
-        h1, h2, h3, p { color: #1f2937; font-family: 'Inter', sans-serif; }
+        .main { background-color: #ffffff; padding: 0 5%; }
+        h1, h2, h3, p { color: #0f172a; font-family: 'Inter', sans-serif; }
+        .hero-title { font-size: 2.5rem; font-weight: 600; margin-bottom: 0; }
+        .hero-tagline { font-size: 1.2rem; color: #334155; margin-top: 0.25rem; }
+        .feature-title { font-size: 1.1rem; font-weight: 600; }
         .stButton button {
-            background-color: #3b82f6;
+            background-color: #2563eb;
             color: white;
-            padding: 0.7em 1.2em;
+            padding: 0.6em 1.2em;
             font-size: 1rem;
-            border-radius: 8px;
+            border-radius: 6px;
             border: none;
         }
     </style>
-""", unsafe_allow_html=True)
+    """,
+    unsafe_allow_html=True,
+)
 
 # ---- Hero Section ----
-st.title("🚀 AI Trading Assistant")
-st.markdown("### Smarter Signals. Real-time News. AI-Powered Decisions.")
-st.markdown("Welcome to your next-gen trading partner powered by LSTM, GPT, and real-time market insights.")
-
-st.button("👉 Join the Beta Program")
+logo_col, title_col = st.columns([1, 4])
+with logo_col:
+    st.image("logo.png", width=120)
+with title_col:
+    st.markdown("<div class='hero-title'>VectorAlgo AI</div>", unsafe_allow_html=True)
+    st.markdown(
+        "<div class='hero-tagline'>Smarter signals and market insights for professional traders.</div>",
+        unsafe_allow_html=True,
+    )
+    st.button("Request Early Access")
 
 # ---- Features ----
-st.markdown("## 🔍 Features")
+st.markdown("### Key Features")
 cols = st.columns(3)
 
 with cols[0]:
-    st.subheader("📊 Smart Signals")
-    st.write("Predictive LSTM models combined with technical indicators.")
+    st.markdown("<div class='feature-title'>Market Signals</div>", unsafe_allow_html=True)
+    st.write("Proprietary LSTM models highlight opportunities ahead of the crowd.")
 
 with cols[1]:
-    st.subheader("📰 GPT News Sentiment")
-    st.write("Real-time news interpreted by GPT for market impact.")
+    st.markdown("<div class='feature-title'>News Sentiment</div>", unsafe_allow_html=True)
+    st.write("Language models analyse headlines to gauge potential impact.")
 
 with cols[2]:
-    st.subheader("📈 Visual Dashboard")
-    st.write("Clean GUI with charts, open positions, and trade logic.")
+    st.markdown("<div class='feature-title'>Performance Dashboard</div>", unsafe_allow_html=True)
+    st.write("Clean charts display open positions and historical results.")
 
 # ---- Optional: Image / GIF ----
 st.markdown("---")
-st.markdown("### 👇 Preview")
-st.image("ai_trading_dashboard_sample.png", caption="Example Dashboard", use_column_width=True)
+st.markdown("### Preview")
+st.image("logo.png", caption="Example Dashboard", use_container_width=True)
 
 # ---- Email Capture (Optional Google Form / Mailchimp) ----
 st.markdown("---")
